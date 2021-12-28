@@ -9,8 +9,8 @@ import MapKit
 import SwiftUI
 
 struct ContentView: View {
-    @State private var centerCoordinate = CLLocationCoordinate2D()
-    
+    @State var centerCoordinate = CLLocationCoordinate2D()
+    @State var locations: [Location] = []
     
     var body: some View {
         VStack (spacing: 0){
@@ -32,6 +32,9 @@ struct ContentView: View {
                 
                 HStack(spacing: 60) {
                     Button(action: {
+                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", description: "A Very long description goes here.", pin: PinType.heart, coordinate: centerCoordinate)
+                        locations.append(newLocation)
+                        print(locations)
                         
                     }) {
                         Image(systemName: "heart.fill")
@@ -40,6 +43,9 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
+                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", description: "A Very long description goes here.", pin: PinType.leaf, coordinate: centerCoordinate)
+                        locations.append(newLocation)
+                        print(locations)
                         
                     }) {
                         Image(systemName: "leaf.fill")
@@ -48,6 +54,9 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
+                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", description: "A Very long description goes here.", pin: PinType.flame, coordinate: centerCoordinate)
+                        locations.append(newLocation)
+                        print(locations)
                         
                     }) {
                         Image(systemName: "flame.fill")
@@ -55,6 +64,9 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
+                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", description: "A Very long description goes here.", pin: PinType.moon, coordinate: centerCoordinate)
+                        locations.append(newLocation)
+                        print(locations)
                         
                     }) {
                         Image(systemName: "moon.fill")

@@ -15,6 +15,13 @@ struct MapView: UIViewRepresentable {
     func makeUIView(context: Context) -> some MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
+        
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = CLLocationCoordinate2D(latitude: 44.49, longitude: 11.32)
+        annotation.title = "Bologna"
+        annotation.subtitle = "La Bella, la Grassa, la Dotta."
+        mapView.addAnnotation(annotation)
+        
         return mapView
     }
     
@@ -32,6 +39,12 @@ struct MapView: UIViewRepresentable {
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             parent.centerCoordinate = mapView.centerCoordinate
+        }
+        
+        func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+            let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
+            view.canShowCallout = true
+            return view
         }
     }
     
