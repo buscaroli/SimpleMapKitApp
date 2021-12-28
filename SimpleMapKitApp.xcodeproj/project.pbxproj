@@ -55,9 +55,9 @@
 			children = (
 				231D112F277B72B10062F670 /* SimpleMapKitAppApp.swift */,
 				231D1131277B72B10062F670 /* ContentView.swift */,
+				231D113F277B7A610062F670 /* MapView.swift */,
 				231D1133277B72B20062F670 /* Assets.xcassets */,
 				231D1135277B72B20062F670 /* Preview Content */,
-				231D113F277B7A610062F670 /* MapView.swift */,
 			);
 			path = SimpleMapKitApp;
 			sourceTree = "<group>";

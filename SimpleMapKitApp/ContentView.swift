@@ -5,29 +5,62 @@
 //  Created by Matteo on 28/12/2021.
 //
 
+import MapKit
 import SwiftUI
 
 struct ContentView: View {
+    @State private var centerCoordinate = CLLocationCoordinate2D()
+    
+    
     var body: some View {
         VStack (spacing: 0){
-            MapView()
-                .edgesIgnoringSafeArea(.all)
+            ZStack {
+                MapView(centerCoordinate: $centerCoordinate)
+                    .edgesIgnoringSafeArea(.all)
+                Circle()
+                    .fill(.indigo)
+                    .opacity(0.3)
+                    .frame(width: 24, height: 24)
+            }
+            
             
             ZStack {
                 Color.black
                     .edgesIgnoringSafeArea(.all)
-                    .frame(width: .infinity, height: 50)
+                    .frame(height: 50)
                 
                 
-                HStack(spacing: 50) {
-                    Image(systemName: "star")
+                HStack(spacing: 60) {
+                    Button(action: {
+                        
+                    }) {
+                        Image(systemName: "heart.fill")
+                            .foregroundColor(.pink)
+                        
+                    }
                     
-                    Image(systemName: "heart")
+                    Button(action: {
+                        
+                    }) {
+                        Image(systemName: "leaf.fill")
+                            .foregroundColor(.green)
+                        
+                    }
                     
-                    Image(systemName: "cross")
+                    Button(action: {
+                        
+                    }) {
+                        Image(systemName: "flame.fill")
+                            .foregroundColor(.red)
+                    }
                     
-                    Image(systemName: "person")
-                    
+                    Button(action: {
+                        
+                    }) {
+                        Image(systemName: "moon.fill")
+                            .foregroundColor(.yellow)
+                        
+                    }
                 }
                 .font(.title)
                 .foregroundColor(.white)
