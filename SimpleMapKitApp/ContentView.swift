@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     var body: some View {
         VStack (spacing: 0){
-            Color.blue
+            MapView()
                 .edgesIgnoringSafeArea(.all)
             
             ZStack {
@@ -31,6 +31,7 @@ struct ContentView: View {
                 }
                 .font(.title)
                 .foregroundColor(.white)
+                .padding(.top)
             }
             
             
