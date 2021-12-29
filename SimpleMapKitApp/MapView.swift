@@ -17,24 +17,22 @@ struct MapView: UIViewRepresentable {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
         
-//        let annotation = MKPointAnnotation()
-//        annotation.coordinate = CLLocationCoordinate2D(latitude: 44.49, longitude: 11.32)
-//        annotation.title = "Bologna"
-//        annotation.subtitle = "La Bella, la Grassa, la Dotta."
-//        mapView.addAnnotation(annotation)
+        // Centering the starting map view on the city of Bologna (centerOn) with a zoom of 8.0 (span)
+        let centerOn = CLLocationCoordinate2D(latitude: 44.49, longitude: 11.32)
+        let span = MKCoordinateSpan(latitudeDelta: 8.0, longitudeDelta: 8.0)
+        let region = MKCoordinateRegion(center: centerOn, span: span)
+        mapView.setRegion(region, animated: false)
         
         return mapView
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
-        if locations.count != view.annotations.count {
-//            let locationCoordinates = locations.map {$0.coordinate}
-            
+        // Everytime the map view is moved this function  is called.
+        // The current annotations are removed, the new annotation is added to the array and the map is refreshed.
+        if view.annotations.count != locations.count {
             view.removeAnnotations(view.annotations)
-//            view.addAnnotations(locationCoordinates)
-            _ = locations.map {view.addAnnotation($0.coordinate)}
-            print("locations: \(locations)")
-//            print("locationCoordinates: \(locationCoordinates)")
+            view.addAnnotations(locations)
+            
         }
     }
     

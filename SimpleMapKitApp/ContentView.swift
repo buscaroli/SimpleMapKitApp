@@ -9,13 +9,13 @@ import MapKit
 import SwiftUI
 
 struct ContentView: View {
-    @State var centerCoordinate = MKPointAnnotation()
+    @State var centerCoordinate =  CLLocationCoordinate2D()
     @State var locations = [Location]()
     
     var body: some View {
         VStack (spacing: 0){
             ZStack {
-                MapView(centerCoordinate: $centerCoordinate.coordinate, locations: locations)
+                MapView(centerCoordinate: $centerCoordinate, locations: locations)
                     .edgesIgnoringSafeArea(.all)
                 Circle()
                     .fill(.indigo)
@@ -32,9 +32,13 @@ struct ContentView: View {
                 
                 HStack(spacing: 60) {
                     Button(action: {
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", description: "A Very long description goes here.", pin: PinType.heart, coordinate: centerCoordinate)
+                        
+                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.heart, coordinate: centerCoordinate)
                         self.locations.append(newLocation)
-                        print(locations)
+                        // DEBUG
+                        for (num, loc) in locations.enumerated() {
+                            print("\(num): lat:\(loc.coordinate.latitude), lon: \(loc.coordinate.longitude)\n")
+                        }
                         
                     }) {
                         Image(systemName: "heart.fill")
@@ -43,7 +47,7 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", description: "A Very long description goes here.", pin: PinType.leaf, coordinate: centerCoordinate)
+                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.leaf, coordinate: centerCoordinate)
                         locations.append(newLocation)
                         print(locations)
                         
@@ -54,7 +58,7 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", description: "A Very long description goes here.", pin: PinType.flame, coordinate: centerCoordinate)
+                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.flame, coordinate: centerCoordinate)
                         locations.append(newLocation)
                         print(locations)
                         
@@ -64,7 +68,7 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", description: "A Very long description goes here.", pin: PinType.moon, coordinate: centerCoordinate)
+                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.moon, coordinate: centerCoordinate)
                         locations.append(newLocation)
                         print(locations)
                         

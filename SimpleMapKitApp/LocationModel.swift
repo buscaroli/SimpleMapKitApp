@@ -5,6 +5,7 @@
 //  Created by Matteo on 28/12/2021.
 //
 
+import Foundation
 import CoreLocation
 import MapKit
 
@@ -15,11 +16,19 @@ enum PinType: String {
     case moon
 }
 
-struct Location: Identifiable {
-    var id = UUID()
-    var title: String
-    var subtitle: String
-    var description: String
+class Location: NSObject, MKAnnotation {
+    
+    var title: String?
+    var subtitle: String?
+    var desc: String?
     var pin: PinType
-    var coordinate: MKPointAnnotation
+    var coordinate: CLLocationCoordinate2D
+    
+    init(title: String, subtitle: String, desc: String, pin: PinType = .heart, coordinate: CLLocationCoordinate2D) {
+        self.title = title
+        self .subtitle = subtitle
+        self.desc = desc
+        self.pin = pin
+        self .coordinate = coordinate
+    }
 }
