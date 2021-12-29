@@ -6,6 +6,7 @@
 //
 
 import CoreLocation
+import MapKit
 
 enum PinType: String {
     case heart  // implicit raw value of heart
@@ -14,10 +15,11 @@ enum PinType: String {
     case moon
 }
 
-struct Location {
+struct Location: Identifiable {
+    var id = UUID()
     var title: String
     var subtitle: String
     var description: String
     var pin: PinType
-    var coordinate: CLLocationCoordinate2D
+    var coordinate: MKPointAnnotation
 }

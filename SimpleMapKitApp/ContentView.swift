@@ -9,13 +9,13 @@ import MapKit
 import SwiftUI
 
 struct ContentView: View {
-    @State var centerCoordinate = CLLocationCoordinate2D()
-    @State var locations: [Location] = []
+    @State var centerCoordinate = MKPointAnnotation()
+    @State var locations = [Location]()
     
     var body: some View {
         VStack (spacing: 0){
             ZStack {
-                MapView(centerCoordinate: $centerCoordinate)
+                MapView(centerCoordinate: $centerCoordinate.coordinate, locations: locations)
                     .edgesIgnoringSafeArea(.all)
                 Circle()
                     .fill(.indigo)
@@ -33,7 +33,7 @@ struct ContentView: View {
                 HStack(spacing: 60) {
                     Button(action: {
                         let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", description: "A Very long description goes here.", pin: PinType.heart, coordinate: centerCoordinate)
-                        locations.append(newLocation)
+                        self.locations.append(newLocation)
                         print(locations)
                         
                     }) {

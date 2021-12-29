@@ -10,23 +10,32 @@ import SwiftUI
 
 struct MapView: UIViewRepresentable {
     @Binding var centerCoordinate: CLLocationCoordinate2D
+    var locations: [Location]
     
     // Display the Map
-    func makeUIView(context: Context) -> some MKMapView {
+    func makeUIView(context: Context) -> MKMapView {
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
         
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = CLLocationCoordinate2D(latitude: 44.49, longitude: 11.32)
-        annotation.title = "Bologna"
-        annotation.subtitle = "La Bella, la Grassa, la Dotta."
-        mapView.addAnnotation(annotation)
+//        let annotation = MKPointAnnotation()
+//        annotation.coordinate = CLLocationCoordinate2D(latitude: 44.49, longitude: 11.32)
+//        annotation.title = "Bologna"
+//        annotation.subtitle = "La Bella, la Grassa, la Dotta."
+//        mapView.addAnnotation(annotation)
         
         return mapView
     }
     
-    func updateUIView(_ uiView: UIViewType, context: Context) {
-        
+    func updateUIView(_ view: MKMapView, context: Context) {
+        if locations.count != view.annotations.count {
+//            let locationCoordinates = locations.map {$0.coordinate}
+            
+            view.removeAnnotations(view.annotations)
+//            view.addAnnotations(locationCoordinates)
+            _ = locations.map {view.addAnnotation($0.coordinate)}
+            print("locations: \(locations)")
+//            print("locationCoordinates: \(locationCoordinates)")
+        }
     }
     
     // Work on the Map
@@ -39,6 +48,7 @@ struct MapView: UIViewRepresentable {
         
         func mapViewDidChangeVisibleRegion(_ mapView: MKMapView) {
             parent.centerCoordinate = mapView.centerCoordinate
+            
         }
         
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -69,6 +79,6 @@ extension MKPointAnnotation {
 
 struct MapView_Previews: PreviewProvider {
     static var previews: some View {
-        MapView(centerCoordinate: .constant(MKPointAnnotation.example.coordinate))
+        MapView(centerCoordinate: .constant(MKPointAnnotation.example.coordinate), locations: [Location]())
     }
 }
