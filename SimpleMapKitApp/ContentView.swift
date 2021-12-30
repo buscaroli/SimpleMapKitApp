@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     @State var centerCoordinate =  CLLocationCoordinate2D()
     @State var locations = [Location]()
+    @State var newLocation = Location(title: "", subtitle: "", desc: "", coordinate: CLLocationCoordinate2D(latitude: 44.498, longitude: 11.327))
+    
     
     var body: some View {
         VStack (spacing: 0){
@@ -33,7 +35,7 @@ struct ContentView: View {
                 HStack(spacing: 60) {
                     Button(action: {
                         
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.heart, coordinate: centerCoordinate)
+                        newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.heart, coordinate: centerCoordinate)
                         self.locations.append(newLocation)
                         // DEBUG
                         for (num, loc) in locations.enumerated() {
@@ -47,7 +49,7 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.leaf, coordinate: centerCoordinate)
+                        newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.leaf, coordinate: centerCoordinate)
                         locations.append(newLocation)
                         print(locations)
                         
@@ -58,7 +60,7 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.flame, coordinate: centerCoordinate)
+                        newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.flame, coordinate: centerCoordinate)
                         locations.append(newLocation)
                         print(locations)
                         
@@ -68,7 +70,7 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.moon, coordinate: centerCoordinate)
+                        newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.moon, coordinate: centerCoordinate)
                         locations.append(newLocation)
                         print(locations)
                         
@@ -89,9 +91,9 @@ struct ContentView: View {
         
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-        
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//        
+//    }
+//}
