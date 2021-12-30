@@ -69,7 +69,7 @@ extension Location {
     static var example = Location(title: "Bologna",
                                   subtitle: "La Rossa, La Grassa e la Dotta.",
                                   desc: "Wonderful University and Food Capital of Italy.",
-                                  coordinate: CLLocationCoordinate2D(latitude: 44.498, longitude: 11.327))
+                                  location: CLLocationCoordinate2D(latitude: 44.498, longitude: 11.327))
 }
 
 struct AddPinModalView_Previews: PreviewProvider {

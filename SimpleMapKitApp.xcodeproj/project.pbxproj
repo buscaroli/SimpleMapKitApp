@@ -13,6 +13,8 @@
 		231D1137277B72B20062F670 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 231D1136277B72B20062F670 /* Preview Assets.xcassets */; };
 		231D1140277B7A610062F670 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 231D113F277B7A610062F670 /* MapView.swift */; };
 		23C06A6A277DD57800FE3DF0 /* AddPinModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C06A69277DD57800FE3DF0 /* AddPinModalView.swift */; };
+		23C06A6C277E2A4700FE3DF0 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C06A6B277E2A4700FE3DF0 /* Util.swift */; };
+		23C06A6E277E2DE700FE3DF0 /* ContentViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23C06A6D277E2DE700FE3DF0 /* ContentViewModel.swift */; };
 		23FB47EA277BB17600E964FA /* LocationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB47E9277BB17600E964FA /* LocationModel.swift */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +26,8 @@
 		231D1136277B72B20062F670 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		231D113F277B7A610062F670 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		23C06A69277DD57800FE3DF0 /* AddPinModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPinModalView.swift; sourceTree = "<group>"; };
+		23C06A6B277E2A4700FE3DF0 /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		23C06A6D277E2DE700FE3DF0 /* ContentViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentViewModel.swift; sourceTree = "<group>"; };
 		23FB47E9277BB17600E964FA /* LocationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -64,6 +68,8 @@
 				23C06A69277DD57800FE3DF0 /* AddPinModalView.swift */,
 				231D1133277B72B20062F670 /* Assets.xcassets */,
 				231D1135277B72B20062F670 /* Preview Content */,
+				23C06A6B277E2A4700FE3DF0 /* Util.swift */,
+				23C06A6D277E2DE700FE3DF0 /* ContentViewModel.swift */,
 			);
 			path = SimpleMapKitApp;
 			sourceTree = "<group>";
@@ -147,7 +153,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				23FB47EA277BB17600E964FA /* LocationModel.swift in Sources */,
+				23C06A6C277E2A4700FE3DF0 /* Util.swift in Sources */,
 				231D1132277B72B10062F670 /* ContentView.swift in Sources */,
+				23C06A6E277E2DE700FE3DF0 /* ContentViewModel.swift in Sources */,
 				23C06A6A277DD57800FE3DF0 /* AddPinModalView.swift in Sources */,
 				231D1140277B7A610062F670 /* MapView.swift in Sources */,
 				231D1130277B72B10062F670 /* SimpleMapKitAppApp.swift in Sources */,
@@ -284,6 +292,8 @@
 				DEVELOPMENT_TEAM = X37S278753;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show it on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -313,6 +323,8 @@
 				DEVELOPMENT_TEAM = X37S278753;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show it on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
