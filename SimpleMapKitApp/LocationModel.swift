@@ -26,9 +26,17 @@ class Location: NSObject, MKAnnotation {
     
     init(title: String, subtitle: String, desc: String, pin: PinType = .heart, coordinate: CLLocationCoordinate2D) {
         self.title = title
-        self .subtitle = subtitle
+        self.subtitle = subtitle
         self.desc = desc
         self.pin = pin
-        self .coordinate = coordinate
+        self.coordinate = coordinate
     }
+    
+//    init(pin: PinType, coordinate: CLLocationCoordinate2D) {
+//        self.title = ""
+//        self.subtitle = ""
+//        self.desc = ""
+//        self.pin = pin
+//        self.coordinate = coordinate
+//    }
 }
