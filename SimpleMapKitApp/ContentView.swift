@@ -51,8 +51,11 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.leaf, coordinate: centerCoordinate)
-                        locations.append(newLocation)
+                        newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.leaf, coordinate: centerCoordinate)
+                        presentingModal = true
+                        
+                        
+                        self.locations.append(newLocation)
                         print(locations)
                         
                     }) {
@@ -62,8 +65,10 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.flame, coordinate: centerCoordinate)
-                        locations.append(newLocation)
+                        newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.flame, coordinate: centerCoordinate)
+                        presentingModal = true
+                        
+                        self.locations.append(newLocation)
                         print(locations)
                         
                     }) {
@@ -72,8 +77,10 @@ struct ContentView: View {
                     }
                     
                     Button(action: {
-                        let newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.moon, coordinate: centerCoordinate)
-                        locations.append(newLocation)
+                        newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.moon, coordinate: centerCoordinate)
+                        presentingModal = true
+                        
+                        self.locations.append(newLocation)
                         print(locations)
                         
                     }) {
