@@ -10,7 +10,7 @@ import SwiftUI
 
 struct MapView: UIViewRepresentable {
     @Binding var centerCoordinate: CLLocationCoordinate2D
-    var locations: [Location]
+    @Binding var locations: [Location]
     
     // Display the Map
     func makeUIView(context: Context) -> MKMapView {
@@ -52,15 +52,53 @@ struct MapView: UIViewRepresentable {
         func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
             let view = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
             view.canShowCallout = true
+            
+            view.pinTintColor = getPinColor(pin: parent.locations.last?.pin ?? PinType.leaf)
+            
             return view
         }
+        
+        // Returns the color of the pin depending on its type
+        func getPinColor(pin: PinType) -> UIColor {
+            print(pin)
+            switch pin {
+            case .heart:
+                return (UIColor.red)
+            case .leaf:
+                return (UIColor.green)
+            case .flame:
+                return (UIColor.orange)
+            case .moon:
+                return (UIColor.yellow)
+            }
+        }
+        
+        // Returns the icon of the pin depending on its type
+        func getPinIcon(pin: PinType) -> String {
+            print(pin)
+            switch pin {
+            case .heart:
+                return ("heart.fill")
+            case .leaf:
+                return ("leaf.fill")
+            case .flame:
+                return ("flame.fill")
+            case .moon:
+                return ("moon.fill")
+            }
+        }
+        
     }
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
+    
+    
 }
+
+
 
 // Example for the Preview
 extension MKPointAnnotation {
@@ -75,8 +113,8 @@ extension MKPointAnnotation {
 }
 
 
-struct MapView_Previews: PreviewProvider {
-    static var previews: some View {
-        MapView(centerCoordinate: .constant(MKPointAnnotation.example.coordinate), locations: [Location]())
-    }
-}
+//struct MapView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MapView(centerCoordinate: .constant(MKPointAnnotation.example.coordinate), locations: [Location]())
+//    }
+//}

@@ -17,7 +17,7 @@ struct ContentView: View {
     var body: some View {
         VStack (spacing: 0){
             ZStack {
-                MapView(centerCoordinate: $centerCoordinate, locations: locations)
+                MapView(centerCoordinate: $centerCoordinate, locations: $locations)
                     .edgesIgnoringSafeArea(.all)
                 Circle()
                     .fill(.indigo)
@@ -40,9 +40,10 @@ struct ContentView: View {
                         
                         self.locations.append(newLocation)
                         // DEBUG
-                        for (num, loc) in locations.enumerated() {
-                            print("\(num): lat:\(loc.coordinate.latitude), lon: \(loc.coordinate.longitude)\n")
-                        }
+                        print(locations.last?.pin)
+//                        for (num, loc) in locations.enumerated() {
+//                            print("\(num): lat:\(loc.coordinate.latitude), lon: \(loc.coordinate.longitude)\n")
+//                        }
                         
                     }) {
                         Image(systemName: "heart.fill")
@@ -56,7 +57,7 @@ struct ContentView: View {
                         
                         
                         self.locations.append(newLocation)
-                        print(locations)
+                        print(locations.last?.pin)
                         
                     }) {
                         Image(systemName: "leaf.fill")
@@ -69,7 +70,7 @@ struct ContentView: View {
                         presentingModal = true
                         
                         self.locations.append(newLocation)
-                        print(locations)
+                        print(locations.last?.pin)
                         
                     }) {
                         Image(systemName: "flame.fill")
@@ -81,7 +82,7 @@ struct ContentView: View {
                         presentingModal = true
                         
                         self.locations.append(newLocation)
-                        print(locations)
+                        print(locations.last?.pin)
                         
                     }) {
                         Image(systemName: "moon.fill")
