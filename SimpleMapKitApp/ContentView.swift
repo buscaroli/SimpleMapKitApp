@@ -13,6 +13,7 @@ struct ContentView: View {
     @State var locations = [Location]()
     @State var newLocation = Location(title: "", subtitle: "", desc: "", coordinate: MKPointAnnotation.example.coordinate)
     @State private var presentingModal = false
+    @State private var showingList = false
     
     var body: some View {
         VStack (spacing: 0){
@@ -29,10 +30,10 @@ struct ContentView: View {
             ZStack {
                 Color.black
                     .edgesIgnoringSafeArea(.all)
-                    .frame(height: 50)
+                    .frame(height: 60)
                 
                 
-                HStack(spacing: 60) {
+                HStack(spacing: 160) {
                     Button(action: {
                         
                         newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.heart, coordinate: centerCoordinate)
@@ -48,51 +49,26 @@ struct ContentView: View {
                     }) {
                         Image(systemName: "heart.fill")
                             .foregroundColor(.pink)
+                            .font(.largeTitle)
                         
                     }
                     
                     Button(action: {
-                        newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.leaf, coordinate: centerCoordinate)
-                        presentingModal = true
-                        
-                        
-                        self.locations.append(newLocation)
-                        print(locations.last?.pin)
+                        self.showingList = true
                         
                     }) {
-                        Image(systemName: "leaf.fill")
+                        Image(systemName: "list.star")
                             .foregroundColor(.green)
-                        
+                            .font(.largeTitle)
                     }
                     
-                    Button(action: {
-                        newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.flame, coordinate: centerCoordinate)
-                        presentingModal = true
-                        
-                        self.locations.append(newLocation)
-                        print(locations.last?.pin)
-                        
-                    }) {
-                        Image(systemName: "flame.fill")
-                            .foregroundColor(.red)
-                    }
-                    
-                    Button(action: {
-                        newLocation = Location(title: "Title", subtitle: "Subtitle goes here", desc: "A Very long description goes here.", pin: PinType.moon, coordinate: centerCoordinate)
-                        presentingModal = true
-                        
-                        self.locations.append(newLocation)
-                        print(locations.last?.pin)
-                        
-                    }) {
-                        Image(systemName: "moon.fill")
-                            .foregroundColor(.yellow)
-                        
-                    }
                 }
                 .font(.title)
                 .foregroundColor(.white)
                 .padding(.top)
+            }
+            .sheet(isPresented: $showingList) {
+                ListView(locations: $locations)
             }
             
             

@@ -9,15 +9,15 @@ import Foundation
 import CoreLocation
 import MapKit
 
-enum PinType: String {
-    case heart  // implicit raw value of heart
-    case leaf
-    case flame
-    case moon
+enum PinType: String, CaseIterable {
+    case heart = "Loved"
+    case leaf = "Liked"
+    case flame = "Hated"
+    case moon = "Wish to visit"
 }
 
-class Location: NSObject, MKAnnotation {
-    
+class Location: NSObject, MKAnnotation, Identifiable {
+    var id = UUID()
     var title: String?
     var subtitle: String?
     var desc: String?

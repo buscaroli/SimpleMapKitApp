@@ -15,24 +15,43 @@ struct AddPinModalView: View {
     @State private var title: String = ""
     @State private var subtitle: String = ""
     @State private var desc: String = ""
+    @State private var opinions: [PinType] = [.heart, .leaf, .flame, .moon]
+    @State private var opinionSelection: PinType = .heart
+    
     
     var body: some View {
-        VStack(spacing: 20) {
+        VStack(spacing: 10) {
             Text("New Location")
                 .font(.largeTitle)
-                .padding(.bottom, 80)
+                .padding(.bottom, 20)
+            
             TextField("Title:", text: $title)
                 .font(.title3)
                 .foregroundColor(.black)
                 .textFieldStyle(.roundedBorder)
                 .multilineTextAlignment(.leading)
                 .padding()
+            
             TextField("Subtitle:", text: $subtitle)
                 .font(.title3)
                 .foregroundColor(.black)
                 .textFieldStyle(.roundedBorder)
                 .multilineTextAlignment(.leading)
                 .padding()
+            
+            Text("Your Thought:")
+                .font(.title)
+                .foregroundColor(.black)
+                .padding(.bottom, -50)
+            Picker("Your Thought", selection: $opinionSelection) {
+                ForEach(opinions, id: \.self) { item in
+                    Text("\(item.rawValue)")
+                        .foregroundColor(.black)
+                }
+            }
+            .pickerStyle(.wheel)
+            // .background(Color.red)
+            
             
             Text("Description:")
                 .font(.title)
