@@ -71,6 +71,7 @@ struct AddPinModalView: View {
                 newLocation.title = title
                 newLocation.subtitle = subtitle
                 newLocation.desc = desc
+                newLocation.pin = opinionSelection
                 
                 self.presentation.wrappedValue.dismiss()
             }

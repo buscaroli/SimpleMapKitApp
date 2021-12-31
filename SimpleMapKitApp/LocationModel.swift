@@ -5,7 +5,7 @@
 //  Created by Matteo on 28/12/2021.
 //
 
-import Foundation
+import SwiftUI
 import CoreLocation
 import MapKit
 
@@ -32,11 +32,31 @@ class Location: NSObject, MKAnnotation, Identifiable {
         self.coordinate = coordinate
     }
     
-//    init(pin: PinType, coordinate: CLLocationCoordinate2D) {
-//        self.title = ""
-//        self.subtitle = ""
-//        self.desc = ""
-//        self.pin = pin
-//        self.coordinate = coordinate
-//    }
+    func getPinLabel(_ pin: PinType) -> String {
+        switch pin {
+        
+        case .heart:
+            return "heart.fill"
+        case .leaf:
+            return "leaf.fill"
+        case .flame:
+            return "flame.fill"
+        case .moon:
+            return "moon.fill"
+        }
+    }
+    
+    func getPinColor(_ pin: PinType) -> Color {
+        switch pin {
+            
+        case .heart:
+            return Color.pink
+        case .leaf:
+            return Color.green
+        case .flame:
+            return Color.red
+        case .moon:
+            return Color.yellow
+        }
+    }
 }

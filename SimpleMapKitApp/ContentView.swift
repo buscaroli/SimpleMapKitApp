@@ -67,7 +67,8 @@ struct ContentView: View {
                 .foregroundColor(.white)
                 .padding(.top)
             }
-            .sheet(isPresented: $showingList) {
+            
+            .fullScreenCover(isPresented: $showingList) {
                 ListView(locations: $locations)
             }
             
