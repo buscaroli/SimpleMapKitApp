@@ -27,13 +27,13 @@ struct CardView: View {
             Text(place.desc ?? "")
                 .font(.body)
         }
-        .padding()
         .frame(maxWidth: .infinity )
+        .padding(.vertical)
         .overlay(
             RoundedRectangle(cornerRadius: 15)
                 .stroke(Color.gray, lineWidth: 2)
             )
-        .padding(.horizontal)
+        .padding()
     }
 }
 

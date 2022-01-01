@@ -15,34 +15,40 @@ struct ListView: View {
     var body: some View {
         VStack {
             NavigationView {
-                ScrollView {
-                    LazyVStack(spacing: 15) {
-                        ForEach(locations) { place in
+                
+                    List {
+                        ForEach(locations, id: \.id) { place in
                             CardView(place: place)
-                            }
                         }
-                    .padding(.top)
+                        .onDelete(perform: delete)
                     }
-                .navigationTitle("Your Places")
-                }
+                    .padding(.top)
+                    .listStyle(.plain)
+                    .navigationTitle("Your Places")
+            }
+                
             
-            Button("Map") {
+            Button(action: {
                 self.presentation.wrappedValue.dismiss()
+            }) {
+                Text("Map")
+                    .foregroundColor(.white)
             }
             .font(.title)
             .padding()
-            .foregroundColor(.white)
             .background(.black)
             .cornerRadius(.infinity)
             .shadow(color: .gray, radius: 6, x: 0, y: 0)
-            }
-            
-        
         }
-        
-    
-        
     }
+    
+    func delete(at indexes: IndexSet) {
+        if let first = indexes.first {
+            locations.remove(at: first)
+        }
+    }
+
+}
 
 
 extension Location {
